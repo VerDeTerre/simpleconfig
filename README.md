@@ -6,11 +6,11 @@ simpleconfig is a tool to facilitate loading configuration files when using mult
 
 ## Usage ##
 
-Your configuration files may be placed in a "config" directory at the root of your project. Files should be named using the following format:
+Your configuration files may be placed in a config directory specified when instantiating a `ConfigLoader` object. Files should be named using the following format:
 
     <name>.<environment>.json
 
-For example, you might place development database credentials in `config/database.development.json`.
+For example, if your config files are located in a "config" directory at the root of your project, you might place development database credentials in `config/database.development.json`.
 
 When you run you app, specify the environment using the `APP_ENV` environment variable. Multiple environments may be specified, separated by commas. In the case of multiple environments, the configuration will be built in the order specified, i.e., environments to the right will override configurations from environments listed earlier. This feature can be used to create a default configuration, with specific environments defining a more limited set of configurations.
 
@@ -20,7 +20,7 @@ To load configurations, instantiate a `ConfigLoader` with the path to the root o
 
     from simpleconfig import ConfigLoader
 
-    config_loader = ConfigLoader('.')
+    config_loader = ConfigLoader('./config')
     db_config = config_loader.load_config('database')
 
 ## License ##

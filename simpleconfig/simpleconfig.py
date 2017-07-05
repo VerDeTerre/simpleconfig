@@ -7,9 +7,8 @@ from json import loads
 
 class ConfigLoader(object):
 
-    def __init__(self, app_root):
-        self.app_root = app_root
-        self.config_root = os.path.join(app_root, 'config')
+    def __init__(self, config_root):
+        self.config_root = os.path.abspath(config_root)
         self.environments = os.environ.get(
             'APP_ENV',
             'development'
